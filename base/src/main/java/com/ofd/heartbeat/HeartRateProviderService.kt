@@ -140,6 +140,25 @@ class HeartRateProviderService : SuspendingComplicationDataSourceService() {
             )
                 .build()
 
+            ComplicationType.RANGED_VALUE -> RangedValueComplicationData.Builder(
+                value = heartRate.toFloat(),
+                min = 50F,
+                max = 130F,
+                contentDescription = PlainComplicationText.Builder("Heart Rate").build()
+            ).setText(PlainComplicationText.Builder(heartRate.toString()).build())
+                .setMonochromaticImage(
+                MonochromaticImage.Builder(
+                    image = Icon.createWithResource(
+                        this,
+                        if (uctr.incrementAndGet() % 2 == 0)
+                            R.drawable.ic_baseline_monitor_heart_24
+                        else
+                            R.drawable.ic_baseline_monitor_heart_24line
+                    )
+                ).build()
+            )
+                .build()
+
             else -> {
                 Log.w(TAG, "Unexpected complication type ${request.complicationType}")
                 null
