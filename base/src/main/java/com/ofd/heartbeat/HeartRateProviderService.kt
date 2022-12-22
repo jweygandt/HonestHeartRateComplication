@@ -132,7 +132,7 @@ class HeartRateProviderService : SuspendingComplicationDataSourceService() {
                     image = Icon.createWithResource(
                         this,
                         if (uctr.incrementAndGet() % 2 == 0)
-                            R.drawable.ic_baseline_monitor_heart_24
+                            R.drawable.ic_baseline_monitor_heart_24line_red
                         else
                             R.drawable.ic_baseline_monitor_heart_24line
                     )
